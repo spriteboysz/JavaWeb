@@ -23,6 +23,8 @@ public class IndexPageServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String tips = (String) request.getAttribute("tips");
+
         response.setStatus(200);
         response.setContentType("text/html;charset=utf-8");
         response.setCharacterEncoding("utf-8");
@@ -40,6 +42,9 @@ public class IndexPageServlet extends HttpServlet {
         out.println("<tr>");
         out.println("<td width = '200'>2-1</td>");
         out.println("<td align = 'center' valign = 'top'>");
+        if (tips != null) {
+            out.println("<label style='color:red'>" + tips + "</label>");
+        }
         out.println("<form action = 'GradeQueryServlet' method='post'>");
         out.println("<h3>查询课程成绩</h3>");
         out.println("<p>学号：<input type='text' name='sNum' placeholder='学号'/></p>");

@@ -31,7 +31,12 @@ public class GradeQueryServlet extends HttpServlet {
         GradeDAO gradeDAO = new GradeDAO();
         Grade grade = gradeDAO.queryGrade(sNum, cid);
 
-        request.setAttribute("grade", grade);
-        request.getRequestDispatcher("GradePageServlet").forward(request, response);
+        if (grade == null) {
+            request.setAttribute("tips", "用户ID或课程ID错误，重新输入");
+            request.getRequestDispatcher("index").forward(request, response);
+        } else {
+            request.setAttribute("grade", grade);
+            request.getRequestDispatcher("GradePageServlet").forward(request, response);
+        }
     }
 }

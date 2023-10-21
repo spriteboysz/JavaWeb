@@ -38,7 +38,7 @@ public class LoginPageServlet extends HttpServlet {
         out.println("</head>");
         out.println("<body>");
         if (tips != null) {
-            out.println("<label style='color:red'>"+tips+"</label>");
+            out.println("<label style='color:red'>" + tips + "</label>");
         }
         out.println("<form action = 'CheckServlet' method='post'>");
         out.println("<h3>学生成绩查询系统-学生登录</h3>");

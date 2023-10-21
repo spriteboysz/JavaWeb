@@ -1,9 +1,12 @@
 package com.deean.Servlets;
 
+import com.deean.DTO.Student;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,12 +20,19 @@ import java.io.PrintWriter;
 @WebServlet("/index")
 public class IndexPageServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         doPost(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        HttpSession session = request.getSession();
+        Student student = (Student) session.getAttribute("student");
+        if (student == null) {
+            request.setAttribute("tips", "请先登录");
+            request.getRequestDispatcher("login").forward(request, response);
+        }
+
         String tips = (String) request.getAttribute("tips");
 
         response.setStatus(200);

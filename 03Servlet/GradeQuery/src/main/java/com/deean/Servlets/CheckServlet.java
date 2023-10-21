@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -34,6 +35,10 @@ public class CheckServlet extends HttpServlet {
             request.setAttribute("tips", "用户名或密码错误，重新登录");
             request.getRequestDispatcher("login").forward(request, response);
         } else {
+            // 通过session控制授权用户登录
+            HttpSession session = request.getSession();
+            session.setMaxInactiveInterval(60 * 2);     // session超时时间
+            session.setAttribute("student", student);
             response.sendRedirect("index");
         }
     }

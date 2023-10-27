@@ -60,10 +60,10 @@ public class IndexPageServlet extends HttpServlet {
         out.println("<p>学号：<input type='text' name='sNum' placeholder='学号'/></p>");
         out.println("<p>课程：<input type='text' name='cid' placeholder='课程号'/></p>");
         out.println("<p><input type='submit' value='查询'/></p>");
+        out.println("</form>");
         out.println("</td>");
         out.println("</tr>");
         out.println("</table>");
-        out.println("</form>");
         out.println("</body>");
         out.println("</html>");
         out.flush();

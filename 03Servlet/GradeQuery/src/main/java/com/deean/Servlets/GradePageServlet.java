@@ -46,7 +46,7 @@ public class GradePageServlet extends HttpServlet {
         out.println("<td align = 'center' valign = 'top'>");
 
         out.println("<h3>查询结果</h3>");
-        out.println("<table width = '200' border = '1' cellspacing = '0'");
+        out.println("<table width = '200' border = '1' cellspacing = '0'>");
         out.println("<tr><td>学号</td><td>" + grade.getsNum() + "</td></tr>");
         out.println("<tr><td>姓名</td><td>" + grade.getsName() + "</td></tr>");
         out.println("<tr><td>课程</td><td>" + grade.getCid() + "</td></tr>");

@@ -1,5 +1,9 @@
 <%@ page import="com.deean.dto.Book" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
+
+
+<%--
   Created by IntelliJ IDEA.
   User: Deean
   Date: 2023-10-26
@@ -16,7 +20,7 @@
     List<Book> books = (List<Book>) request.getAttribute("books");
 %>
 <table border="1" align="center" cellspacing="0">
-    <caption>图书列表</caption>
+    <caption>图书列表(Java)</caption>
     <tr>
         <td>图书编号</td>
         <td>图书名称</td>
@@ -41,6 +45,32 @@
         </td>
     </tr>
     <% } %>
+</table>
+<br>
+
+${books.size()}
+<table border="1" align="center" cellspacing="0">
+    <caption>图书列表(EL/JSTL)</caption>
+    <tr>
+        <td>图书编号</td>
+        <td>图书名称</td>
+        <td>图书作者</td>
+        <td>图书价格</td>
+        <td>图书描述</td>
+        <td>图书库存</td>
+    </tr>
+
+    <%--@elvariable id="books" type="java.util.List"--%>
+    <c:forEach var="i" begin="0" end="3">
+        <tr>
+            <td>${books[0].bookNum}</td>
+            <td>${books[0].bookNum}</td>
+            <td>${books[0].bookAuthor}</td>
+            <td>${books[0].bookPrice}</td>
+            <td>${books[0].bookDesc}</td>
+            <td>${books[0].bookStock}</td>
+        </tr>
+    </c:forEach>
 </table>
 </body>
 </html>

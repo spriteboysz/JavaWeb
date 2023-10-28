@@ -57,7 +57,6 @@ public class GradePageServlet extends HttpServlet {
         out.println("</td>");
         out.println("</tr>");
         out.println("</table>");
-        out.println("</form>");
         out.println("</body>");
         out.println("</html>");
         out.flush();

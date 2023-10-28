@@ -7,7 +7,7 @@
 </head>
 <body>
 <%
-    String tips = request.getParameter("tips");
+    String tips = (String) request.getAttribute("tips");
 %>
 <table border='1' width='100%'>
     <tr>

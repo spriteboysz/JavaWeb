@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Deean
@@ -8,36 +10,41 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title></title>
 </head>
 <body>
 <h3>图书信息列表</h3>
-    <table width="90%" align="center" border="1" cellspacing="0">
+<table width="90%" align="center" border="1" cellspacing="0">
+    <tr>
+        <th>图书编号</th>
+        <th>图书封面</th>
+        <th>图书名称</th>
+        <th>图书作者</th>
+        <th>图书价格</th>
+        <th>图书库存</th>
+        <th>图书描述</th>
+        <th>图书类型</th>
+        <th>操作</th>
+    </tr>
+    <c:forEach items="${books}" var="book">
         <tr>
-            <th>图书编号</th>
-            <th>图书封面</th>
-            <th>图书名称</th>
-            <th>图书作者</th>
-            <th>图书价格</th>
-            <th>图书库存</th>
-            <th>图书描述</th>
-            <th>图书类型</th>
-            <th>操作</th>
-        </tr>
-        <tr>
-            <td>100001</td>
-            <td><img src="" alt=""></td>
-            <td>Java</td>
-            <td>凉凉</td>
-            <td>8.88</td>
-            <td>10</td>
-            <td>666</td>
-            <td>原创</td>
+            <td>${book.bookId}</td>
+            <td><img src="${book.bookCover}" alt="" height="50"></td>
+            <td>${book.bookName}</td>
+            <td>${book.bookAuthor}</td>
+            <td>${book.bookPrice}</td>
+            <td>${book.bookStock}</td>
+            <td>${book.bookDesc}</td>
             <td>
-                <a href="">修改</a>
-                <a href="">删除</a>
+                <c:if test="${book.bookType==1}">原创</c:if>
+                <c:if test="${book.bookType==2}">翻译</c:if>
+            </td>
+            <td>
+                <a href="BookModifyServlet?bookId=${book.bookId}">修改</a>
+                <a href="BookRemoveServlet?bookId=${book.bookId}">删除</a>
             </td>
         </tr>
-    </table>
+    </c:forEach>
+</table>
 </body>
 </html>

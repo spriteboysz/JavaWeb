@@ -8,18 +8,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title></title>
 </head>
 <body>
 <h3>修改图书信息</h3>
-<form action="" method="post">
-    <label>图书编号 <input type="text" name=""/> </label><br>
-    <label>图书名称 <input type="text" name=""/> </label><br>
-    <label>图书作者 <input type="text" name=""/> </label><br>
-    <label>图书价格 <input type="text" name=""/> </label><br>
-    <label>图书封面 <input type="text" name=""/> </label><br>
-    <label>图书描述 <input type="text" name=""/> </label><br>
-    <label>图书库存 <input type="text" name=""/> </label><br>
+<form action="BookModifyServlet" method="post">
+    <label>图书编号 ${bookId} <input hidden="" type="text" name="bookId"/> </label><br>
+    <label>图书名称 <input type="text" name="bookName"/> </label><br>
+    <label>图书作者 <input type="text" name="bookAuthor"/> </label><br>
+    <label>图书价格 <input type="text" name="bookPrice"/> </label><br>
+    <label>图书封面 <input type="file" name="bookCover"/> </label><br>
+    <label>图书描述 <input type="text" name="bookDesc"/> </label><br>
+    <label>图书库存 <input type="text" name="bookStock"/> </label><br>
     <label>图书类型<br>
         <input type="radio" name="bookType" value="1"/>原创
         <input type="radio" name="bookType" value="2"/>翻译 </label><br>

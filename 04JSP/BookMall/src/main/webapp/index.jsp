@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>书城后台管理-主页</title>
     <style type="text/css">
         body {
             padding: 0;
@@ -28,7 +28,7 @@
             图书信息管理
             <ul style="list-style: none">
                 <li><a href="book-add.jsp" target="mainFrame">添加图书</a></li>
-                <li><a href="book-list.jsp" target="mainFrame">图书列表</a></li>
+                <li><a href="BookListServlet" target="mainFrame">图书列表</a></li>
             </ul>
             订单管理
             <ul style="list-style: none">

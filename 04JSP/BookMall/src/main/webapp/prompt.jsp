@@ -8,9 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title></title>
 </head>
 <body>
-显示提示信息
+<div style="text-align: center; margin-top: 150px">
+    ${tips}
+</div>
 </body>
 </html>

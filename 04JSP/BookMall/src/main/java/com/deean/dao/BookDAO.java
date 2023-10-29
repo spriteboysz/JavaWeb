@@ -54,7 +54,7 @@ public class BookDAO {
                        book_type   bookType
                 from books
                 where book_id=?""";
-        Book book = null;
+        Book book;
         try {
             book = queryRunner.query(sql, new BeanHandler<>(Book.class), bookId);
         } catch (SQLException e) {
@@ -66,7 +66,7 @@ public class BookDAO {
     public boolean insertBook(Book book) {
         DataSource dataSource = DruidUtils.getDataSource();
         QueryRunner queryRunner = new QueryRunner(dataSource);
-        int cnt = 0;
+        int cnt;
         String sql = "insert into books values(?,?,?,?,?,?,?,?)";
         try {
             cnt = queryRunner.update(sql,
@@ -87,7 +87,7 @@ public class BookDAO {
     public boolean updateBook(Book book) {
         DataSource dataSource = DruidUtils.getDataSource();
         QueryRunner queryRunner = new QueryRunner(dataSource);
-        int cnt = 0;
+        int cnt;
         String sql = """
                 update books
                 set book_name=?,
@@ -117,7 +117,7 @@ public class BookDAO {
     public boolean deleteBook(String bookId) {
         DataSource dataSource = DruidUtils.getDataSource();
         QueryRunner queryRunner = new QueryRunner(dataSource);
-        int cnt = 0;
+        int cnt;
         String sql = "delete from books where book_id = ?";
         try {
             cnt = queryRunner.update(sql, bookId);

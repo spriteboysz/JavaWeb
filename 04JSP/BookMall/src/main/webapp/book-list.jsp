@@ -26,6 +26,7 @@
         <th>图书类型</th>
         <th>操作</th>
     </tr>
+    <jsp:useBean id="books" scope="request" type="java.util.List"/>
     <c:forEach items="${books}" var="book">
         <tr>
             <td>${book.bookId}</td>

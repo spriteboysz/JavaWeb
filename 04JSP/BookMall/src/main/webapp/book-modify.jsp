@@ -1,3 +1,4 @@
+<jsp:useBean id="book" scope="request" type="com.deean.dto.Book"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.

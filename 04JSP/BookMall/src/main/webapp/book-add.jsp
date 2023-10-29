@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>Title</title>
+    <title></title>
 </head>
 <body>
 <h3>添加图书信息</h3>

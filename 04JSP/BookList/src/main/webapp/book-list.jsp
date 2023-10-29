@@ -1,6 +1,6 @@
 <%@ page import="com.deean.dto.Book" %>
 <%@ page import="java.util.List" %>
-<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
 <%--
@@ -60,15 +60,14 @@ ${books.size()}
         <td>图书库存</td>
     </tr>
 
-    <%--@elvariable id="books" type="java.util.List"--%>
-    <c:forEach var="i" begin="0" end="3">
+    <c:forEach var="book" items="${books}">
         <tr>
-            <td>${books[0].bookNum}</td>
-            <td>${books[0].bookNum}</td>
-            <td>${books[0].bookAuthor}</td>
-            <td>${books[0].bookPrice}</td>
-            <td>${books[0].bookDesc}</td>
-            <td>${books[0].bookStock}</td>
+            <td>${book.bookNum}</td>
+            <td>${book.bookNum}</td>
+            <td>${book.bookAuthor}</td>
+            <td>${book.bookPrice}</td>
+            <td>${book.bookDesc}</td>
+            <td>${book.bookStock}</td>
         </tr>
     </c:forEach>
 </table>

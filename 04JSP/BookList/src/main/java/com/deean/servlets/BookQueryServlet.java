@@ -29,6 +29,9 @@ public class BookQueryServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         BookDAO bookDAO = new BookDAO();
         List<Book> books = bookDAO.queryBook();
+        for (Book book : books) {
+            System.out.println(book);
+        }
         request.setAttribute("books", books);
         request.getRequestDispatcher("book-list.jsp").forward(request, response);
     }

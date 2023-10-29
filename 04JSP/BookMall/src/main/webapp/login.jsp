@@ -95,7 +95,7 @@
                     <td align="center">
                         <label>
                             <input type="text" name="userCode" placeholder="验证码">
-                            <img src="" alt="" width="100" height="30"></label>
+                            <img src="VerificationCodeServlet" alt="" width="100" height="30" id="codeImg"></label>
                     </td>
                 </tr>
                 <tr height="120">
@@ -103,6 +103,12 @@
                 </tr>
             </table>
         </form>
+        <script type="text/javascript">
+            const img = document.getElementById("codeImg");
+            img.onclick = function () {
+                img.src = "VerificationCodeServlet?m=" + Math.random();
+            }
+        </script>
     </div>
 </div>
 <div id="login_footer">

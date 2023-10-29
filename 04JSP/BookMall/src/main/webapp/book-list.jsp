@@ -40,8 +40,9 @@
                 <c:if test="${book.bookType==2}">翻译</c:if>
             </td>
             <td>
-                <a href="BookModifyServlet?bookId=${book.bookId}">修改</a>
-                <a href="BookRemoveServlet?bookId=${book.bookId}">删除</a>
+                <a href="BookQueryServlet?bookId=${book.bookId}">修改</a>
+                <a href="BookRemoveServlet?bookId=${book.bookId}"
+                   onclick="return confirm('确认删除?')">删除</a>
             </td>
         </tr>
     </c:forEach>

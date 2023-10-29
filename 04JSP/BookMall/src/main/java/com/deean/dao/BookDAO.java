@@ -18,7 +18,7 @@ import java.util.List;
  */
 
 public class BookDAO {
-    public List<Book> QueryBook() {
+    public List<Book> queryBook() {
         DataSource dataSource = DruidUtils.getDataSource();
         QueryRunner queryRunner = new QueryRunner(dataSource);
         String sql = """
@@ -40,7 +40,7 @@ public class BookDAO {
         return books;
     }
 
-    public Book QueryBook(String bookId) {
+    public Book queryBook(String bookId) {
         DataSource dataSource = DruidUtils.getDataSource();
         QueryRunner queryRunner = new QueryRunner(dataSource);
         String sql = """

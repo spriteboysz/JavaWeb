@@ -11,7 +11,7 @@ class BookDAOTest {
 
     @Test
     void queryBook() {
-        List<Book> books = bookDAO.QueryBook();
+        List<Book> books = bookDAO.queryBook();
         for (Book book : books) {
             System.out.println(book);
         }
@@ -20,7 +20,7 @@ class BookDAOTest {
     @Test
     void QueryBook() {
         String bookID = "202301";
-        Book book = bookDAO.QueryBook(bookID);
+        Book book = bookDAO.queryBook(bookID);
         System.out.println(book);
     }
 

@@ -36,11 +36,11 @@ public class BookService {
         return bookDAO.queryBook();
     }
 
-    public PageUtil<Book> queryBook(int pageCurrent, int pageSize) {
-        int start = (pageCurrent - 1) * pageSize;
-        List<Book> books = bookDAO.queryBook(start, pageSize);
+    public PageUtil<Book> queryBook(int pageCurrent, int limit) {
+        int start = (pageCurrent - 1) * limit;
+        List<Book> books = bookDAO.queryBook(start, limit);
         long count = bookDAO.queryBookCount();
-        long pageCount = count % pageSize == 0 ? count / pageSize : count / pageSize + 1;
-        return new PageUtil<>(books, pageCurrent, (int) pageCount);
+        int pageCount = (int) Math.ceil(count * 1.0 / limit);
+        return new PageUtil<>(books, pageCurrent, pageCount);
     }
 }

@@ -61,10 +61,10 @@
 
             <c:if test="${bookPageUtil.pageCurrent < bookPageUtil.pageCount}">
                 <a href="BookListServlet?pageCurrent=${bookPageUtil.pageCurrent+1}">下一页</a>
-                <a href="BookListServlet?pageCurrent=1">尾页</a>
+                <a href="BookListServlet?pageCurrent=${bookPageUtil.pageCount}">尾页</a>
             </c:if>
             <c:if test="${bookPageUtil.pageCurrent == bookPageUtil.pageCount}">
-                <label style="color:rgb(128,128,128)">上一页</label>
+                <label style="color:rgb(128,128,128)">下一页</label>
                 <label style="color:rgb(128,128,128)">首页</label>
             </c:if>
 

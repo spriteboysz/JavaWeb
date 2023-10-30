@@ -29,7 +29,7 @@ public class UserDAO {
                        user_tel      userTel,
                        user_desc     userDesc
                 from users
-                where user_name = ?;""";
+                where user_name = ?""";
         try {
             user = queryRunner.query(sql, new BeanHandler<>(User.class), userName);
         } catch (SQLException e) {

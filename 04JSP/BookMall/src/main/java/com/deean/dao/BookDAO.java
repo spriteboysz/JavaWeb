@@ -151,7 +151,7 @@ public class BookDAO {
     }
 
     public long queryBookCount() {
-        long count = 0;
+        long count;
         String sql = "select count(1) from books";
         DataSource dataSource = DruidUtils.getDataSource();
         QueryRunner queryRunner = new QueryRunner(dataSource);

@@ -2,6 +2,7 @@ package com.deean.service;
 
 import com.deean.dao.BookDAO;
 import com.deean.dto.Book;
+import com.deean.utils.PageUtil;
 
 import java.util.List;
 
@@ -33,5 +34,13 @@ public class BookService {
 
     public List<Book> queryBook() {
         return bookDAO.queryBook();
+    }
+
+    public PageUtil<Book> queryBook(int pageCurrent, int pageSize) {
+        int start = (pageCurrent - 1) * pageSize;
+        List<Book> books = bookDAO.queryBook(start, pageSize);
+        long count = bookDAO.queryBookCount();
+        long pageCount = count % pageSize == 0 ? count / pageSize : count / pageSize + 1;
+        return new PageUtil<>(books, pageCurrent, (int) pageCount);
     }
 }

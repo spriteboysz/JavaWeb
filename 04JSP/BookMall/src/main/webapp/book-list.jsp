@@ -25,8 +25,9 @@
         <th>图书类型</th>
         <th>操作</th>
     </tr>
-    <jsp:useBean id="books" scope="request" type="java.util.List"/>
-    <c:forEach items="${books}" var="book">
+
+    <jsp:useBean id="bookPageUtil" scope="request" type="com.deean.utils.PageUtil"/>
+    <c:forEach items="${bookPageUtil.list}" var="book">
         <tr>
             <td>${book.bookId}</td>
             <td><img src="${book.bookCover}" alt="" height="50"></td>
@@ -46,6 +47,29 @@
             </td>
         </tr>
     </c:forEach>
+    <tr>
+        <td colspan="9" align="center">
+            <c:if test="${bookPageUtil.pageCurrent == 1}">
+                <label style="color:rgb(128,128,128)">首页</label>
+                <label style="color:rgb(128,128,128)">上一页</label>
+            </c:if>
+            <c:if test="${bookPageUtil.pageCurrent > 1}">
+                <a href="BookListServlet?pageCurrent=1">首页</a>
+                <a href="BookListServlet?pageCurrent=${bookPageUtil.pageCurrent-1}">上一页</a>
+            </c:if>
+            当前第${bookPageUtil.pageCurrent}页/共${bookPageUtil.pageCount}页
+
+            <c:if test="${bookPageUtil.pageCurrent < bookPageUtil.pageCount}">
+                <a href="BookListServlet?pageCurrent=${bookPageUtil.pageCurrent+1}">下一页</a>
+                <a href="BookListServlet?pageCurrent=1">尾页</a>
+            </c:if>
+            <c:if test="${bookPageUtil.pageCurrent == bookPageUtil.pageCount}">
+                <label style="color:rgb(128,128,128)">上一页</label>
+                <label style="color:rgb(128,128,128)">首页</label>
+            </c:if>
+
+        </td>
+    </tr>
 </table>
 </body>
 </html>

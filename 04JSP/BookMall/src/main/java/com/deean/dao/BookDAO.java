@@ -5,6 +5,7 @@ import com.deean.utils.DruidUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -127,4 +128,38 @@ public class BookDAO {
         return cnt > 0;
     }
 
+    public List<Book> queryBook(int start, int limit) {
+        DataSource dataSource = DruidUtils.getDataSource();
+        QueryRunner queryRunner = new QueryRunner(dataSource);
+        String sql = """
+                select book_id     bookId,
+                       book_name   bookName,
+                       book_author bookAuthor,
+                       book_cover  bookCover,
+                       book_price  bookPrice,
+                       book_desc   bookDesc,
+                       book_stock  bookStock,
+                       book_type   bookType
+                from books limit ?, ?""";
+        List<Book> books;
+        try {
+            books = queryRunner.query(sql, new BeanListHandler<>(Book.class), start, limit);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return books;
+    }
+
+    public long queryBookCount() {
+        long count = 0;
+        String sql = "select count(1) from books";
+        DataSource dataSource = DruidUtils.getDataSource();
+        QueryRunner queryRunner = new QueryRunner(dataSource);
+        try {
+            count = queryRunner.query(sql, new ScalarHandler<>());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return count;
+    }
 }

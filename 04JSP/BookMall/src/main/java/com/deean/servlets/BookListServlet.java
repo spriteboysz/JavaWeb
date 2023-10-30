@@ -2,6 +2,7 @@ package com.deean.servlets;
 
 import com.deean.dto.Book;
 import com.deean.service.BookService;
+import com.deean.utils.PageUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,7 +10,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Author: Deean
@@ -27,9 +27,13 @@ public class BookListServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String current = request.getParameter("pageCurrent");
+        int pageCurrent = current == null ? 1 : Integer.parseInt(current);
+        int pageSize = 2;
+
         BookService bookService = new BookService();
-        List<Book> books = bookService.queryBook();
-        request.setAttribute("books", books);
+        PageUtil<Book> bookPageUtil = bookService.queryBook(pageCurrent, pageSize);
+        request.setAttribute("bookPageUtil", bookPageUtil);
         request.getRequestDispatcher("book-list.jsp").forward(request, response);
     }
 }

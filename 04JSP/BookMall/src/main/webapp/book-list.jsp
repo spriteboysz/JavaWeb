@@ -65,9 +65,8 @@
             </c:if>
             <c:if test="${bookPageUtil.pageCurrent == bookPageUtil.pageCount}">
                 <label style="color:rgb(128,128,128)">下一页</label>
-                <label style="color:rgb(128,128,128)">首页</label>
+                <label style="color:rgb(128,128,128)">尾页</label>
             </c:if>
-
         </td>
     </tr>
 </table>

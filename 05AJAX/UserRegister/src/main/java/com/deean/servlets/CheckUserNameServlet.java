@@ -25,7 +25,7 @@ public class CheckUserNameServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String userName = req.getParameter("userName");
-        boolean valid = !userName.startsWith("admin");
+        boolean valid = !userName.startsWith("admin") && !userName.isEmpty();
         resp.setCharacterEncoding("utf-8");
         PrintWriter out = resp.getWriter();
         String str = valid ? "<label style='color:green'>用户名可用</label>" : "<label style='color:red'>用户名可用</label>";

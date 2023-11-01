@@ -24,7 +24,7 @@
 <script type="text/javascript">
     $("#checkBtn").click(function () {
         let userName = $("#userName").val()
-        /* $.ajax({
+        $.ajax({
             url: "CheckUserNameServlet?userName=" + userName,
             type: "get",
             success: function (res) {
@@ -34,7 +34,11 @@
                     $("#tipsLabel").replaceWith("<label id=tipsLabel style='color:red'>用户名不可用</label>");
                 }
             }
-        });*/
+        });
+    });
+
+    $("#userName").change(function () {
+        let userName = $("#userName").val();
         $.get("CheckUserNameServlet", {userName: userName}, function (res) {
             if (res.code === 1000) {
                 $("#tipsLabel").replaceWith("<label id=tipsLabel style='color:green'>用户名可用</label>");
@@ -42,7 +46,7 @@
                 $("#tipsLabel").replaceWith("<label id=tipsLabel style='color:red'>用户名不可用</label>");
             }
         }, "json");
-    });
+    })
 </script>
 </body>
 </html>

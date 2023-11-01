@@ -26,10 +26,12 @@ public class CheckUserNameServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String userName = req.getParameter("userName");
         boolean valid = !userName.startsWith("admin") && !userName.isEmpty();
+        System.out.println(valid);
         resp.setCharacterEncoding("utf-8");
+        resp.setContentType("application/json;charset=utf-8");
+        String ss = valid ? "{\"code\":1000,\"msg\":\"success\"}" : "{\"code\":1001,\"msg\":\"fail\"}";
         PrintWriter out = resp.getWriter();
-        String str = valid ? "<label style='color:green'>用户名可用</label>" : "<label style='color:red'>用户名可用</label>";
-        out.println(str);
+        out.println(ss);
         out.flush();
         out.close();
     }
